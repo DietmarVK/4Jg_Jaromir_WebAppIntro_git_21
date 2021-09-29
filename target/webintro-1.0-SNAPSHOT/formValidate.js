@@ -39,6 +39,16 @@ const fetchTable = () => {
     fetch(url)
         //.then(function(response) {console.log("HTTP-status: " + response.status)}); //Mit function
         //.then(response => console.log("HTTP-status: " + response.status)); //lambda expression
-        .then(response => response.text())
-        .then(tableData => document.getElementById("tableContent").innerHTML = tableData);
+        .then(response => response.text()) // .text() for Plaintext, .json() for JSON
+        .then(tableData => document.getElementById("tableContent").innerHTML = tableData)
+        .catch(err => console.error("Error: " + err)); // exception handling nur für die Funktion(en) im Zuge vom Promise
+}
+
+const fetchServlet = () => {
+    let url = "TextServlet";
+    fetch(url, {
+        method: "POST",
+        headers: { con },
+        body: ""
+    })
 }
