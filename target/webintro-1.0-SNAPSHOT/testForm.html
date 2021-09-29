@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript" src="formValidate.js"></script>
-
 </head>
 <body>
 <h1>Fill out form:</h1>
@@ -17,7 +16,7 @@
         </tr>
         <tr>
             <td>lastname:</td>
-            <td><input type="text" name="lastname" onmouseenter="fill(this, 'Alaba')"></td>
+            <td><input type="text" id="lastname" name="lastname" onmouseenter="fill(this, 'Alaba')"></td>
             <td><div id="errLastname" style="color: crimson; font-style: italic"/></td>
         </tr>
         <tr>
@@ -25,13 +24,15 @@
             <td><input type="text" name="age" onmouseenter="fill(this, '29')"></td>
             <td><div id="errAge" style="color: crimson; font-style: italic"/></td>
         </tr>
-    </table><br/>
+    </table>
     <input type="submit" value="send">
 </form>
 
-<input type="button" value="fetch request" onclick="fetchTable();">
+<input type="button" value="fetch request" onclick="fetchTable()">
 <div id="tableContent">
 
 </div>
+<input type="button" value="request to servlet" onclick="fetchServlet()">
+<div id="responseFromServlet"></div>
 </body>
 </html>

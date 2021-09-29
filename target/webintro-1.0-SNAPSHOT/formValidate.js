@@ -15,7 +15,6 @@ const validate = (formElem) => {
     } else {
         document.getElementById("errFirstname").innerHTML = "";
     }
-
     let lastname = formElem.lastname.value;
     if (lastname == "" || lastname.length < 3 || lastname.length > 20) {
         ok = false;
@@ -23,7 +22,6 @@ const validate = (formElem) => {
     } else {
         document.getElementById("errLastname").innerHTML = "";
     }
-
     let age = formElem.age.value;
     if (isNaN(age) || age < 1 || age > 120) {
         ok = false;
@@ -37,18 +35,19 @@ const validate = (formElem) => {
 const fetchTable = () => {
     let url = "timetable.html";
     fetch(url)
-        //.then(function(response) {console.log("HTTP-status: " + response.status)}); //Mit function
-        //.then(response => console.log("HTTP-status: " + response.status)); //lambda expression
-        .then(response => response.text()) // .text() for Plaintext, .json() for JSON
+        .then(response => response.text())  // .text() for Plaintext, .json() for JSON
         .then(tableData => document.getElementById("tableContent").innerHTML = tableData)
-        .catch(err => console.error("Error: " + err)); // exception handling nur für die Funktion(en) im Zuge vom Promise
+        .catch(err => console.error(err));
 }
 
 const fetchServlet = () => {
-    let url = "TextServlet";
+    let url = "TestServlet";
+    let lastname = document.getElementById("lastname").value;
     fetch(url, {
         method: "POST",
-        headers: { con },
-        body: ""
+        headers: { "Content-Type" : "application/x-www-form-urlencoded"},
+        body: "lastname=" + lastname
     })
+        .then(response => response.text()).then(responseData => document.getElementById("responseFromServlet").innerHTML = responseData)
+        .catch(err => console.error(err));
 }
