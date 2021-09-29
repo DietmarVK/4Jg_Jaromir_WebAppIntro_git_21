@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="formValidate.js"></script>
+
+</head>
+<body>
+<h1>Fill out form:</h1>
+<form method="post" action="/hello-servlet" onsubmit="return validate(this);">
+    <table>
+        <tr>
+            <td>firstname:</td>
+            <td><input type="text" name="firstname" onmouseenter="fill(this, 'David')"></td>
+            <td><div id="errFirstname" style="color: crimson; font-style: italic"/></td>
+        </tr>
+        <tr>
+            <td>lastname:</td>
+            <td><input type="text" name="lastname" onmouseenter="fill(this, 'Alaba')"></td>
+            <td><div id="errLastname" style="color: crimson; font-style: italic"/></td>
+        </tr>
+        <tr>
+            <td>age:</td>
+            <td><input type="text" name="age" onmouseenter="fill(this, '29')"></td>
+            <td><div id="errAge" style="color: crimson; font-style: italic"/></td>
+        </tr>
+    </table><br/>
+    <input type="submit" value="send">
+</form>
+
+<input type="button" value="fetch request" onclick="fetchTable();">
+<div id="tableContent">
+
+</div>
+</body>
+</html>

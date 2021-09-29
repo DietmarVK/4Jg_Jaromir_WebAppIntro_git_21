@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSP - Hello World</title>
+    <script type="text/javascript" src="guestbook.js"></script>
+
+</head>
+<body>
+<h1>Welcome to our Guestbook</h1>
+<br/>
+<form action="hello-servlet" method="post"> <br/>
+    nickname: <input name="nickname" value="sf"> <br/>
+    email: <input name="email" value="sf@kaindorf.at"> <br/>
+    comment: <input name="comment" value="great page"> <br/>
+    <input type="submit" value="submit">
+    <input type="reset" value="reset">
+    <input type="button" value="button"onclick="onButtonClick();">
+    <input type="checkbox" name="cb" value="AUT">Austria</input>
+    <input type="checkbox" name="cb" value="SUI">Suisse</input>
+    <input type="checkbox" name="cb" value="GER">Germany</input>
+    <input type="radio" name="language" value="ger">german</input>
+    <input type="radio" name="language" value="eng">english</input>
+    <select name="season" multiple size="2">
+        <option value="Spring">Spring</option>
+        <option value="Summer">Summer</option>
+        <option value="Fall">Fall</option>
+        <option value="Winter">Winter</option>
+    </select>
+</form>
+</body>
+</html>
