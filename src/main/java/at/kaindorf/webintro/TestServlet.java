@@ -1,5 +1,7 @@
 package at.kaindorf.webintro;
 
+import at.kaindorf.webintro.beans.GuestBookEntry;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -21,7 +23,14 @@ public class TestServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         String name = request.getParameter("lastname");
         System.out.println("name: " + name);
-        writer.println("request from " + name + " received");
+        // writer.println("request from " + name + " received");
+        GuestBookEntry entry1 = new GuestBookEntry("james", "bond@mi6.uk", "Martini");
+        GuestBookEntry entry2 = new GuestBookEntry("Q", "q@mi6.uk", "Take care");
+        GuestBookEntry[] entries = {entry1, entry2};
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonObjectString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entries);
+        System.out.println(jsonObjectString);
+        writer.println(jsonObjectString);
         writer.flush();
         writer.close();
     }
