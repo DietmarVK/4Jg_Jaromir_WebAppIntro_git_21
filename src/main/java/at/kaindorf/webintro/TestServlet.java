@@ -8,6 +8,9 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet(name = "TestServlet", value = "/TestServlet")
 public class TestServlet extends HttpServlet {
@@ -28,6 +31,10 @@ public class TestServlet extends HttpServlet {
         GuestBookEntry entry2 = new GuestBookEntry("Q", "q@mi6.uk", "Take care");
         GuestBookEntry[] entries = {entry1, entry2};
         ObjectMapper mapper = new ObjectMapper();
+        List<GuestBookEntry> entryList = Arrays.stream(entries).collect(Collectors.toList());
+        String[] jsonStrArray = entryList.stream()
+                                         .map( e -> e.getNickname() )
+                                         .toArray(String[]::new);
         String jsonObjectString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entries);
         System.out.println(jsonObjectString);
         writer.println(jsonObjectString);
