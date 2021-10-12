@@ -46,8 +46,16 @@ const fetchServlet = () => {
     fetch(url, {
         method: "POST",
         headers: { "Content-Type" : "application/x-www-form-urlencoded"},
-        body: "lastname=" + lastname
-    })
-        .then(response => response.text()).then(responseData => document.getElementById("responseFromServlet").innerHTML = responseData)
+        body: "lastname=" + lastname //+ "&firstname=" + firstname
+    }) // init nur wenn POST oder spezielle Header
+        //.then(response => response.text())
+        //.then(responseData => document.getElementById("responseFromServlet").innerHTML = responseData)
+        //.catch(err => console.error(err));
+        .then(response => response.json())
+        .then(jsonObj => processJson(jsonObj))
         .catch(err => console.error(err));
+}
+const processJson = (jsonObj) => {
+    resultStr = jsonObj[0].nickname + "(" + jsonObj[0].email + ")";
+    document.getElementById("responseFromServlet").innerHTML = resultStr;
 }
